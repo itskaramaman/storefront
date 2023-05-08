@@ -1,13 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-
-
-def calculate():
-    x = 1
-    y = 2
-    return x
+from store.models import Product
 
 
 def say_hello(request):
-    x = calculate()
+    product_exists = Product.objects.filter(pk=0).exists()
+
     return render(request, 'hello.html', {'name': 'Mosh'})
